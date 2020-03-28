@@ -2,13 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
-const mongoURL = require("dotenv");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 app = express();
 app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 // mongoose ----
+dotenv.config();
+const mongoURL = process.env.MONGODB_URL;
 mongoose.connect(mongoURL,
 	{
 		useUnifiedTopology: true, 
