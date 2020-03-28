@@ -2,13 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
+const mongoURL = require("dotenv");
 const mongoose = require("mongoose");
 app = express();
 app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 // mongoose ----
-mongoose.connect("mongodb+srv://dbAdmin:dbAdmin@cluster0-tmzur.mongodb.net/todo?retryWrites=true&w=majority",
+mongoose.connect(mongoURL,
 	{
 		useUnifiedTopology: true, 
 		useNewUrlParser: true,
